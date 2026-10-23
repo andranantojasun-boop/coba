@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMPN 1 Soreang - Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; }
+        
+        /* PRELOADER */
+        #preloader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #0f172a;
+            z-index: 9999;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: opacity 1s ease;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #f59e0b, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bento-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .bento-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        /* SLIDER */
+        .slide { opacity: 0; transition: all 1s ease-in-out; position: absolute; inset: 0; }
+        .slide.active { opacity: 1; z-index: 10; }
+
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+    
+    <header class="relative h-screen flex items-end bg-slate-950 overflow-hidden pb-16">
+    <!-- Gambar Background -->
+    <div class="absolute inset-0 opacity-100">
+        <img src="https://i.imgur.com/UAie8NL.jpeg" class="w-full h-full object-cover" alt="Background">
+    </div>
+    
+    <!-- Overlay Gradasi Hitam di Bawah agar Teks Terbaca Jelas -->
+    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent"></div>
+
+    <!-- Konten Teks -->
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-4xl" data-aos="fade-up">
+            <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
+    MGMP IPA <br><span class="text-gradient">SMPN 1 SOREANG</span>
+</h1>
+            <p class="text-lg md:text-xl text-white mb-10 max-w-2xl font-normal">
+                "Menghidupkan ruang kelas melalui kreativitas. Mari kembangkan media pembelajaran digital yang menarik, interaktif, dan relevan dengan potensi siswa di era teknologi."
+            </p>
+        </div>
+    </div>
+</header>
+
+    <!-- Section 1 -->
+    <section class="py-12 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-8 text-slate-900">Guru IPA SMPN 1 SOREANG 2019</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Guru 1 -->
+                <div onclick="openModal(this)" 
+                     data-name="H. Tulus Gunadi, S.Pd. Fis" 
+                     data-img="https://i.imgur.com/2YjGhjB.jpeg" 
+                     data-quote="Fisika mengajarkan kita bahwa setiap aksi memiliki reaksi. Mari ciptakan aksi positif di kelas!" 
+                     class="group relative rounded-[2.5rem] overflow-hidden h-[450px] shadow-xl block cursor-pointer" data-aos="flip-left">
+                    <img src="https://i.imgur.com/2YjGhjB.jpeg" class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition duration-700" alt="Guru">
+                    <div class="absolute bottom-0 left-0 right-0 bg-yellow-500 p-8 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                        <p class="text-slate-900 font-black text-xl leading-tight">H. Tulus Gunadi, S.Pd. Fis</p>
+                        <p class="text-slate-800 font-bold uppercase text-xs mt-2 tracking-widest">Klik untuk Detail</p>
+                    </div>
+                </div>
+
+                <!-- Guru 2 -->
+                <div onclick="openModal(this)" 
+                     data-name="Octoviane Luciane, S.Pd." 
+                     data-img="https://i.imgur.com/SRJdgCS.jpeg" 
+                     data-quote="Mengajar bukan hanya tentang mentransfer ilmu, tetapi juga menyalakan rasa ingin tahu siswa." 
+                     class="group relative rounded-[2.5rem] overflow-hidden h-[450px] shadow-xl block cursor-pointer" data-aos="flip-left" data-aos-delay="100">
+                    <img src="https://i.imgur.com/SRJdgCS.jpeg" class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition duration-700" alt="Guru">
+                    <div class="absolute bottom-0 left-0 right-0 bg-yellow-500 p-8 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                        <p class="text-slate-900 font-black text-xl leading-tight">Octoviane Luciane, S.Pd.</p>
+                        <p class="text-slate-800 font-bold uppercase text-xs mt-2 tracking-widest">Klik untuk Detail</p>
+                    </div>
+                </div>
+
+                <!-- Guru 3 -->
+                <div onclick="openModal(this)" 
+                     data-name="Hj. Neni Rohayani, S.Pd." 
+                     data-img="https://i.imgur.com/Y99yFSR.png" 
+                     data-quote="Pendidikan adalah fondasi utama untuk membangun generasi sains masa depan yang cerdas dan berkarakter." 
+                     class="group relative rounded-[2.5rem] overflow-hidden h-[450px] shadow-xl block cursor-pointer" data-aos="flip-left" data-aos-delay="200">
+                    <img src="https://i.imgur.com/Y99yFSR.png" class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition duration-700" alt="Guru">
+                    <div class="absolute bottom-0 left-0 right-0 bg-yellow-500 p-8 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                        <p class="text-slate-900 font-black text-xl leading-tight">Hj. Neni Rohayani, S.Pd.</p>
+                        <p class="text-slate-800 font-bold uppercase text-xs mt-2 tracking-widest">Klik untuk Detail</p>
+                    </div>
+                </div>
+
+                <!-- Guru 4 -->
+                <div onclick="openModal(this)" 
+                     data-name="Reni Kurniawati, S.Pd." 
+                     data-img="https://i.imgur.com/LfLbzA0.jpeg" 
+                     data-quote="Melalui sains, kita belajar memahami keagungan alam semesta dan terus belajar tanpa batas." 
+                     class="group relative rounded-[2.5rem] overflow-hidden h-[450px] shadow-xl block cursor-pointer" data-aos="flip-left" data-aos-delay="300">
+                    <img src="https://i.imgur.com/LfLbzA0.jpeg" class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition duration-700" alt="Guru">
+                    <div class="absolute bottom-0 left-0 right-0 bg-yellow-500 p-8 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                        <p class="text-slate-900 font-black text-xl leading-tight">Reni Kurniawati, S.Pd.</p>
+                        <p class="text-slate-800 font-bold uppercase text-xs mt-2 tracking-widest">Klik untuk Detail</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2 -->
+    <section class="py-12 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Guru 5 -->
+                <div onclick="openModal(this)" 
+                     data-name="Dinnah Suparthy, S.Si." 
+                     data-img="https://i.imgur.com/6SD1dej.jpeg" 
+                     data-quote="Proses eksperimen mengajari kita bahwa kegagalan adalah langkah menuju penemuan yang berhasil." 
+                     class="group relative rounded-[2.5rem] overflow-hidden h-[450px] shadow-xl block cursor-pointer" data-aos="flip-left">
+                    <img src="https://i.imgur.com/6SD1dej.jpeg" class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition duration-700" alt="Guru">
+                    <div class="absolute bottom-0 left-0 right-0 bg-yellow-500 p-8 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                        <p class="text-slate-900 font-black text-xl leading-tight">Dinnah Suparthy, S.Si.</p>
+                        <p class="text-slate-800 font-bold uppercase text-xs mt-2 tracking-widest">Klik untuk Detail</p>
+                    </div>
+                </div>
+
+                <!-- Guru 6 -->
+                <div onclick="openModal(this)" 
+                     data-name="Imas Rokayah, S.Pd." 
+                     data-img="https://i.imgur.com/vPcb8Af.jpeg" 
+                     data-quote="Setiap siswa punya potensi luar biasa, tugas kita adalah membantu mereka mengeksplorasinya." 
+                     class="group relative rounded-[2.5rem] overflow-hidden h-[450px] shadow-xl block cursor-pointer" data-aos="flip-left" data-aos-delay="100">
+                    <img src="https://i.imgur.com/vPcb8Af.jpeg" class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition duration-700" alt="Guru">
+                    <div class="absolute bottom-0 left-0 right-0 bg-yellow-500 p-8 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                        <p class="text-slate-900 font-black text-xl leading-tight">Imas Rokayah, S.Pd.</p>
+                        <p class="text-slate-800 font-bold uppercase text-xs mt-2 tracking-widest">Klik untuk Detail</p>
+                    </div>
+                </div>
+
+                <!-- Guru 7 -->
+                <div onclick="openModal(this)" 
+                     data-name="Tresna Asriani, S.Pd." 
+                     data-img="https://i.imgur.com/S14ZD9E.jpeg" 
+                     data-quote="Sains interaktif membawa kebahagiaan dan kemudahan dalam memahami dunia di sekitar kita." 
+                     class="group relative rounded-[2.5rem] overflow-hidden h-[450px] shadow-xl block cursor-pointer" data-aos="flip-left" data-aos-delay="200">
+                    <img src="https://i.imgur.com/S14ZD9E.jpeg" class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition duration-700" alt="Guru">
+                    <div class="absolute bottom-0 left-0 right-0 bg-yellow-500 p-8 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                        <p class="text-slate-900 font-black text-xl leading-tight">Tresna Asriani, S.Pd.</p>
+                        <p class="text-slate-800 font-bold uppercase text-xs mt-2 tracking-widest">Klik untuk Detail</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+	
+	
+	
+	
+	
+	
+	
+	<!-- Section 3 -->
+    <section class="py-12 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-8 text-slate-900">Guru IPA SMPN 1 SOREANG 2025</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Guru 1 -->
+                <div onclick="openModal(this)" 
+                     data-name="Dinnah Suparthy, S.Si." 
+                     data-img="https://i.imgur.com/OkxJ335.jpeg" 
+                     data-quote="Proses eksperimen mengajari kita bahwa kegagalan adalah langkah menuju penemuan yang berhasil." 
+                     class="group relative rounded-[2.5rem] overflow-hidden h-[450px] shadow-xl block cursor-pointer" data-aos="flip-left">
+                    <img src="https://i.imgur.com/OkxJ335.jpeg" class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition duration-700" alt="Guru">
+                    <div class="absolute bottom-0 left-0 right-0 bg-yellow-500 p-8 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                        <p class="text-slate-900 font-black text-xl leading-tight">Dinnah Suparty, S.Si.</p>
+                        <p class="text-slate-800 font-bold uppercase text-xs mt-2 tracking-widest">Klik untuk Detail</p>
+                    </div>
+                </div>
+
+                <!-- Guru 2 -->
+                <div onclick="openModal(this)" 
+                     data-name="Imas Rokayah, S.Pd." 
+                     data-img="https://i.imgur.com/oa8aYSk.jpeg" 
+                     data-quote="Setiap siswa punya potensi luar biasa, tugas kita adalah membantu mereka mengeksplorasinya." 
+                     class="group relative rounded-[2.5rem] overflow-hidden h-[450px] shadow-xl block cursor-pointer" data-aos="flip-left" data-aos-delay="100">
+                    <img src="https://i.imgur.com/oa8aYSk.jpeg" class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition duration-700" alt="Guru">
+                    <div class="absolute bottom-0 left-0 right-0 bg-yellow-500 p-8 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                        <p class="text-slate-900 font-black text-xl leading-tight">Imas Rokayah, S.Pd.</p>
+                        <p class="text-slate-800 font-bold uppercase text-xs mt-2 tracking-widest">Klik untuk Detail</p>
+                    </div>
+                </div>
+
+                <!-- Guru 3 -->
+                <div onclick="openModal(this)" 
+                     data-name="Tresna Asriani. S, S.Pd." 
+                     data-img="https://i.imgur.com/bQ9JWFh.jpeg" 
+                     data-quote="Sains interaktif membawa kebahagiaan dan kemudahan dalam memahami dunia di sekitar kita." 
+                     class="group relative rounded-[2.5rem] overflow-hidden h-[450px] shadow-xl block cursor-pointer" data-aos="flip-left" data-aos-delay="200">
+                    <img src="https://i.imgur.com/bQ9JWFh.jpeg" class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition duration-700" alt="Guru">
+                    <div class="absolute bottom-0 left-0 right-0 bg-yellow-500 p-8 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                        <p class="text-slate-900 font-black text-xl leading-tight">Tresna Asriani. S, S.Pd.</p>
+                        <p class="text-slate-800 font-bold uppercase text-xs mt-2 tracking-widest">Klik untuk Detail</p>
+                    </div>
+                </div>
+
+                <!-- Guru 4 -->
+                <div onclick="openModal(this)" 
+                     data-name="Rahmawati Indriani, S.Pd." 
+                     data-img="https://i.imgur.com/WgXq0mo.jpeg" 
+                     data-quote="Sains bukanlah tentang memiliki semua jawaban, melainkan tentang memiliki keberanian untuk menanyakan pertanyaan yang tepat." 
+                     class="group relative rounded-[2.5rem] overflow-hidden h-[450px] shadow-xl block cursor-pointer" data-aos="flip-left" data-aos-delay="300">
+                    <img src="https://i.imgur.com/WgXq0mo.jpeg" class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition duration-700" alt="Guru">
+                    <div class="absolute bottom-0 left-0 right-0 bg-yellow-500 p-8 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                        <p class="text-slate-900 font-black text-xl leading-tight">Rahmawati Indriani, S.Pd.</p>
+                        <p class="text-slate-800 font-bold uppercase text-xs mt-2 tracking-widest">Klik untuk Detail</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4 -->
+    <section class="py-12 bg-slate-50">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Guru 5 -->
+                <div onclick="openModal(this)" 
+                     data-name="Rita Nurfitriani, S.Pd." 
+                     data-img="https://i.imgur.com/k8Hobox.jpeg" 
+                     data-quote="Bertanya adalah langkah pertama menuju penemuan; meragukan adalah langkah pertama menuju kebenaran." 
+                     class="group relative rounded-[2.5rem] overflow-hidden h-[450px] shadow-xl block cursor-pointer" data-aos="flip-left">
+                    <img src="https://i.imgur.com/k8Hobox.jpeg" class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition duration-700" alt="Guru">
+                    <div class="absolute bottom-0 left-0 right-0 bg-yellow-500 p-8 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                        <p class="text-slate-900 font-black text-xl leading-tight">Rita Nurfitriani, S.Pd.</p>
+                        <p class="text-slate-800 font-bold uppercase text-xs mt-2 tracking-widest">Klik untuk Detail</p>
+                    </div>
+                </div>
+
+                <!-- Guru 6 -->
+                <div onclick="openModal(this)" 
+                     data-name="Rusmiati, S.Pd." 
+                     data-img="https://i.imgur.com/ZPGPx0R.jpeg" 
+                     data-quote="Sains bermula dari rasa ingin tahu. Jangan pernah berhenti bertanya 'mengapa' dan 'bagaimana', karena dari sanalah masa depan dimulai." 
+                     class="group relative rounded-[2.5rem] overflow-hidden h-[450px] shadow-xl block cursor-pointer" data-aos="flip-left" data-aos-delay="100">
+                    <img src="https://i.imgur.com/ZPGPx0R.jpeg" class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition duration-700" alt="Guru">
+                    <div class="absolute bottom-0 left-0 right-0 bg-yellow-500 p-8 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                        <p class="text-slate-900 font-black text-xl leading-tight">Rusmiati, S.Pd.</p>
+                        <p class="text-slate-800 font-bold uppercase text-xs mt-2 tracking-widest">Klik untuk Detail</p>
+                    </div>
+                </div>
+
+                
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL POPUP (Foto Membesar + Quote) -->
+    <div id="teacherModal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-[2rem] max-w-lg w-full overflow-hidden shadow-2xl relative transform scale-90 transition-transform duration-300" id="modalContainer">
+            <!-- Tombol Close -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 bg-slate-900/60 hover:bg-slate-900 text-white rounded-full p-2 z-10 transition">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            
+            <!-- Foto Besar (Memfokuskan posisi wajah di atas) -->
+            <div class="h-96 w-full overflow-hidden relative bg-slate-900">
+                <img id="modalImg" src="" alt="Guru" class="w-full h-full object-cover object-top">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                <h3 id="modalName" class="absolute bottom-4 left-6 right-6 text-2xl font-extrabold text-white"></h3>
+            </div>
+
+            <!-- Quote Guru -->
+            <div class="p-8 text-center bg-white">
+                
+                <p id="modalQuote" class="text-slate-700 italic text-lg leading-relaxed font-medium">
+                    "..."
+                </p>
+            </div>
+        </div>
+    </div>
+
+	<footer class="bg-slate-100 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 py-6 text-center text-xs text-slate-500 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>© 2019 - 2026   <a href="https://www.smpn1srg.my.id/" target="_blank" rel="noopener noreferrer" class="font-bold text-sky-600 dark:text-sky-400 hover:underline">  MGMP IPA SMPN 1 SOREANG</a>. Hak Cipta Dilindungi.</p>
+            <p class="mt-1 text-slate-400 dark:text-slate-600">Guru hebat bukan yang tidak lelah, tapi yang tetap mengajar meski lelah.</p>
+        </div>
+    </footer>
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 600, once: true });
+        lucide.createIcons();
+        
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if(preloader) {
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => preloader.style.display = 'none', 600);
+                }, 600);
+            }
+        });
+
+        // FUNGSI MODAL POPUP
+        const modal = document.getElementById('teacherModal');
+        const modalContainer = document.getElementById('modalContainer');
+        const modalImg = document.getElementById('modalImg');
+        const modalName = document.getElementById('modalName');
+        const modalQuote = document.getElementById('modalQuote');
+
+        function openModal(element) {
+            const name = element.getAttribute('data-name');
+            const img = element.getAttribute('data-img');
+            const quote = element.getAttribute('data-quote');
+
+            modalImg.src = img;
+            modalName.innerText = name;
+            modalQuote.innerText = `"${quote}"`;
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContainer.classList.remove('scale-90');
+                modalContainer.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            modalContainer.classList.remove('scale-100');
+            modalContainer.classList.add('scale-90');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Tutup modal jika mengklik area luar modal (backdrop)
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Fetch Data Wakasek jika ada
+        async function updateDataWakasek() {
+            const url = 'https://script.google.com/macros/s/AKfycbwkgz2MYIjeX8e_YT3kleWyBhb4yL5eLpxE9nHb1Y3fpGE0B79Q8ViQtpEVPu0DR0I3/exec';
+            
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+
+                for (let i = 0; i < 5; i++) {
+                    const index = i + 1;
+                    if (data[i]) {
+                        const elNama = document.getElementById(`nama-wakasek-${index}`);
+                        if (elNama) elNama.innerText = data[i].nama;
+
+                        const elJabatan = document.getElementById(`jabatan-wakasek-${index}`);
+                        if (elJabatan) elJabatan.innerText = data[i].jabatan;
+
+                        const elImg = document.getElementById(`img-wakasek-${index}`);
+                        if (elImg) elImg.src = data[i].imageLink;
+                    }
+                }
+            } catch (error) {
+                console.error('Error saat mengambil data:', error);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', updateDataWakasek);
+    </script>   
+</body>
+</html>
